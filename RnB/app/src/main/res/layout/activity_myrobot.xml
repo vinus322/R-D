@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.ymdroid.rnb.myrobot"
+    android:background="@drawable/myrobot_bg">
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_down"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/bt_left"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/down"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_left"
+        android:layout_above="@+id/bt_down"
+        android:layout_toLeftOf="@+id/bt_up"
+        android:layout_toStartOf="@+id/bt_up"
+        android:background="@drawable/left"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_right"
+        android:layout_above="@+id/bt_down"
+        android:layout_alignLeft="@+id/tv_result"
+        android:layout_alignStart="@+id/tv_result"
+        android:background="@drawable/right"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_up"
+        android:onClick="OkButtonClicked"
+        android:background="@drawable/up"
+        android:layout_above="@+id/bt_right"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_ip"
+        android:textColor="@android:color/holo_blue_light"
+        android:layout_above="@+id/bt_up"
+        android:layout_alignRight="@+id/bt_right"
+        android:layout_alignEnd="@+id/bt_right"
+        android:layout_alignLeft="@+id/bt_left"
+        android:layout_alignStart="@+id/bt_left"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_result"
+        android:textColor="@android:color/white"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/bt_up"
+        android:layout_marginTop="74dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

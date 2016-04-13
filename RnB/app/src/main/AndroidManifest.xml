@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.ymdroid.rnb">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Splash" />
+        <activity android:name=".content" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".mypage" />
+        <activity android:name=".mystory" />
+        <activity android:name=".myrobot" />
+        <activity android:name=".mymusic" />
+        <activity android:name=".myemotion"></activity>
+
+    </application>
+
+
+</manifest>
