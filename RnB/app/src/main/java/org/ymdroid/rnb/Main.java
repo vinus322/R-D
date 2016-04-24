@@ -2,11 +2,13 @@ package org.ymdroid.rnb;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
+
+import org.ymdroid.rnb.event.Splash;
+import org.ymdroid.rnb.page.menu;
 
 public class Main extends FragmentActivity {
 
@@ -19,11 +21,11 @@ public class Main extends FragmentActivity {
     }
 
     public void LoginButtonClicked(View v) {
-        Intent intent = new Intent(getApplicationContext(),content.class);
-        startActivity(intent);
+       Intent i = new Intent(Main.this, menu.class);
+        startActivity(i);
 
-        Toast.makeText(getApplicationContext(), "로그인 성공",Toast.LENGTH_LONG).show();
-        finish();
+       Toast.makeText(getApplicationContext(), "로그인 성공",Toast.LENGTH_LONG).show();
+       finish();
     }
 
     public void SignUpButtonClicked(View v){

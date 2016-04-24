@@ -3,6 +3,7 @@
     package="org.ymdroid.rnb">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
 
     <application
         android:allowBackup="true"
@@ -13,18 +14,17 @@
         <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Splash" />
-        <activity android:name=".content" />
+        <activity android:name=".event.Splash" />
         <activity android:name=".SignUp" />
-        <activity android:name=".mypage" />
-        <activity android:name=".mystory" />
-        <activity android:name=".myrobot" />
-        <activity android:name=".mymusic" />
-        <activity android:name=".myemotion"></activity>
+        <activity android:name=".page.menu" />
+        <activity android:name=".page.mypage" />
+        <activity android:name=".page.mystory" />
+        <activity android:name=".page.myrobot" />
+        <activity android:name=".page.mymusic" />
+        <activity android:name=".page.myemotion"></activity>
 
     </application>
 
