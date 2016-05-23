@@ -58,7 +58,8 @@ public class myrobot extends FragmentActivity {
         setContentView(R.layout.activity_myrobot);
 
         et_ip = (EditText) findViewById(R.id.et_ip);
-        et_ip.setText("210.118.64.129");
+        et_ip.setText("192.168.0.97");
+
         videoPlayer();
 
     }
@@ -77,8 +78,9 @@ public class myrobot extends FragmentActivity {
        // progressDialog.setCancelable(false);
        // progressDialog.show();
 
+        String url = et_ip.getText().toString();
         try {
-            Uri video = Uri.parse("rtsp://210.118.64.129:8554/test");
+            Uri video = Uri.parse("rtsp://"+url+":8554/test");
             videoView.setVideoURI(video);
             videoView.setMediaController(mediaControls);
         }catch (Exception e) {

@@ -15,7 +15,7 @@ public class JsonParse {
             return false;
         try {
             JSONObject  jsonRootObject = new JSONObject(data);
-            status =jsonRootObject.optBoolean("status");
+            status =jsonRootObject.optBoolean("UserCheck");
             return status;
         } catch (JSONException e) {
             e.printStackTrace();

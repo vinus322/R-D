@@ -21,7 +21,7 @@ public class HTTPUtil extends Thread {
     Request request;
     Response response;
 
-    final String base_url = "http://210.118.64.129:27017";
+    final String base_url = "http://115.68.182.138";
     public HTTPUtil() {
     }
 

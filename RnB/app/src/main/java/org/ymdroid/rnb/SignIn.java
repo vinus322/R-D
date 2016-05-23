@@ -17,7 +17,7 @@ import org.ymdroid.rnb.page.menu;
 public class SignIn extends FragmentActivity {
     private static final String TAG = "Login";
     String res = "test";
-    private ProgressBar spinner;
+    //private ProgressBar spinner;
     HTTPUtil http = new HTTPUtil();
     JsonParse Json = new JsonParse();
 
@@ -29,42 +29,42 @@ public class SignIn extends FragmentActivity {
         startActivity(new Intent(this, Splash.class));
     }
 
-    public void LoginButtonClicked(View v) {
-       Intent i = new Intent(SignIn.this, menu.class);
+    public void testLoginButtonClicked(View v) {
+       /*Intent i = new Intent(SignIn.this, menu.class);
         startActivity(i);
-
        Toast.makeText(getApplicationContext(), "로그인 성공",Toast.LENGTH_LONG).show();
-       finish();
+       finish();*/
     }
 
-    public void testLoginButtonClicked(View v) throws Exception {
+    public void LoginButtonClicked(View v) throws Exception {
+        Log.e(TAG, "click the Login button ");//로그확인
 
-
-        spinner.setVisibility(View.VISIBLE);
+        //spinner.setVisibility(View.VISIBLE);
         EditText user_email = (EditText) findViewById(R.id.user_Email);
         EditText password = (EditText) findViewById(R.id.password);
 
         //객체 변수명 DB명 과 맞춰주33333
         JSONObject obj = new JSONObject();
-        obj.put("user_id", user_email.getText().toString());
-        obj.put("password", password.getText().toString());
+        obj.put("uemail", user_email.getText().toString());
+        obj.put("upasswd", password.getText().toString());
+        Log.e(TAG, "json : " + obj.toString());//json 객체 확인
 
         //서버로 보냄 파라미터 : "url"동적으로 변화되는 경로, "jsonObject"서버로 보내질 객체
-        HttpTask task = new HttpTask("/api/user/signin", obj.toString());
+        HttpTask task = new HttpTask("/login.php", obj.toString());
         String res = task.execute().get(); //결과값을 받음
         Log.e(TAG, "result : " + res);//결과 객체 확인
 
         //Json 결과 파서
         if (Json.StatusJsonParse(res)) {
-            Json.getUserInfo(res);
+           // Json.getUserInfo(res);
             Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_LONG).show();
-            spinner.setVisibility(View.GONE);
+            //spinner.setVisibility(View.INVISIBLE);
             Intent i = new Intent(SignIn.this, menu.class);
             startActivity(i);
             finish();
         } else {
             Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_LONG).show();
-            spinner.setVisibility(View.GONE);
+            //spinner.setVisibility(View.INVISIBLE);
         }
     }
 
