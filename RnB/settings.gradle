@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':okhttp-3.2.0', ':org.apache.httpcomponents.httpclient_4.5.2'

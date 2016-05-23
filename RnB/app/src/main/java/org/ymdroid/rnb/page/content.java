@@ -1,4 +1,4 @@
-package org.ymdroid.rnb;
+package org.ymdroid.rnb.page;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
+
+import org.ymdroid.rnb.R;
 
 public class content extends FragmentActivity {
 

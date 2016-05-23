@@ -1,16 +1,22 @@
 package org.ymdroid.rnb.page;
 
+import android.app.ProgressDialog;
+import android.media.MediaPlayer;
+import android.media.session.MediaController;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import org.ymdroid.rnb.R;
 import org.ymdroid.rnb.SocketUtil;
@@ -24,6 +30,8 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.URI;
+import java.net.URL;
 import java.util.Objects;
 
 
@@ -32,8 +40,14 @@ public class myrobot extends FragmentActivity {
     PrintWriter out;
     EditText et_ip;
 
+    private VideoView videoView;
+    private int position = 0;
+    private ProgressDialog progressDialog;
+    private android.widget.MediaController mediaControls;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -45,6 +59,48 @@ public class myrobot extends FragmentActivity {
 
         et_ip = (EditText) findViewById(R.id.et_ip);
         et_ip.setText("210.118.64.129");
+        videoPlayer();
+
+    }
+
+    void videoPlayer(){
+        videoView = (VideoView)findViewById(R.id.videoView);
+
+
+        if (mediaControls == null) {
+            mediaControls = new android.widget.MediaController(myrobot.this);
+        }
+
+       // progressDialog = new ProgressDialog(myrobot.this);
+       // progressDialog.setTitle("Android Video");
+       // progressDialog.setMessage("Loading...");
+       // progressDialog.setCancelable(false);
+       // progressDialog.show();
+
+        try {
+            Uri video = Uri.parse("rtsp://210.118.64.129:8554/test");
+            videoView.setVideoURI(video);
+            videoView.setMediaController(mediaControls);
+        }catch (Exception e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
+        videoView.requestFocus();
+
+
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer){
+              //  progressDialog.dismiss();
+                videoView.seekTo(position);
+                if (position == 0) {
+                    videoView.start();
+                }else{
+                    videoView.pause();
+                }
+            }
+        });
+
 
     }
 
