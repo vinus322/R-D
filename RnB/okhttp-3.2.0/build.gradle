@@ -1,4 +1,0 @@
-configurations.create("default")
-artifacts.add("default", file('okhttp-3.2.0.jar'))
-dependencies {
-}
