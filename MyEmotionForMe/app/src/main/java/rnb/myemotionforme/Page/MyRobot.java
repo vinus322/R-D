@@ -42,6 +42,7 @@ public class MyRobot extends ActionBarActivity {
             StrictMode.setThreadPolicy(policy);
         }
         setContentView(R.layout.activity_myrobot);
+
         et_ip = (EditText) findViewById(R.id.et_ip_myrobot);
         et_ip.setText("192.168.0.97");
         videoPlayer();

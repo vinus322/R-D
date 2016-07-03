@@ -44,12 +44,12 @@ public class SignUp extends FragmentActivity {
         email = (EditText) findViewById(R.id.et_email_signup);
         name = (EditText) findViewById(R.id.et_name_signup);
         //EditText birth = (EditText) findViewById(R.id.et_birth);
-
         password = (EditText) findViewById(R.id.et_passwd_signup);
         confirmPasswd = (EditText) findViewById(R.id.et_confirmPW_signup);
 
        // spinner = (ProgressBar) findViewById(R.id.pb_signup);
        // spinner.setVisibility(View.GONE);
+
     }
 
     public void Signup_OkButtonClicked(View v) throws Exception {
@@ -60,8 +60,12 @@ public class SignUp extends FragmentActivity {
         String uemail = email.getText().toString();
         String uname = name.getText().toString();
 
-        if(passwd.getBytes().length <= 0 || confirmPW.getBytes().length <= 0 || uemail.getBytes().length <= 0 || uname.getBytes().length <= 0){
-            //빈값이 넘어올때의 처리
+        passwd = passwd.trim();
+        confirmPW = confirmPW.trim();
+        uemail = uemail.trim();
+        uname = uname.trim();
+
+        if(passwd.getBytes().length <= 0 || confirmPW.getBytes().length <= 0 || uemail.getBytes().length <= 0 || uname.getBytes().length <= 0){//빈값이 넘어올때의 처리
             Toast.makeText(SignUp.this, "값을 입력하세요.", Toast.LENGTH_SHORT).show();
         }
         else {
@@ -71,6 +75,8 @@ public class SignUp extends FragmentActivity {
                 if (passwd.equals(confirmPW)) {
                     //비밀번호 확인 하기
                     confirmPasswd.setTextColor(Color.BLACK);
+
+                    //객체 변수명 DB명 과 맞춰주33333
                     obj = new JSONObject();
                     obj.put("uemail", uemail);
                     obj.put("upasswd", passwd);
@@ -79,8 +85,11 @@ public class SignUp extends FragmentActivity {
 
                     //서버로 보냄 파라미터 : "url"동적으로 변화되는 경로, "jsonObject"서버로 보내질 객체
                     HttpTask task = new HttpTask("/join.php", obj.toString());
-                                    res = task.execute().get(); //결과값을 받음
+                    res = task.execute().get(); //결과값을 받음
                     Log.e(TAG, "result : " + res);//결과 객체 확인
+
+                   // Log.e("TEST", "obj String : " + obj.toString());
+
                    // spinner.setVisibility(View.VISIBLE);
 
                     if (json.StatusJsonParse(res)) {
